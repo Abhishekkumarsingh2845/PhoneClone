@@ -19,210 +19,342 @@ const CustomButton = ({title, onPress, style, textStyle}) => {
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={'light-content'} />
-      <View style={styles.header}>
-        <View style={styles.header1}>
-          <View style={styles.headerLeftView}>
-            <View>
-              <Image
-                source={require('../Asset/man.png')}
-                style={styles.Image1}
-              />
-              <Image
-                source={require('../Asset/india.png')}
-                style={styles.Image2}
-              />
-            </View>
-            <View style={{marginLeft: 12}}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text
-                  style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
-                  Home
-                </Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <StatusBar barStyle={'light-content'} />
+        <View style={styles.header}>
+          <View style={styles.header1}>
+            <View style={styles.headerLeftView}>
+              <View>
                 <Image
-                  source={require('../Asset/down-arrow.png')}
-                  style={styles.arrow}
+                  source={require('../Asset/man.png')}
+                  style={styles.Image1}
+                />
+                <Image
+                  source={require('../Asset/india.png')}
+                  style={styles.Image2}
                 />
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text style={{fontSize: 11}}>D-110 konark Vasundhara,UP</Text>
+
+              <View style={{marginLeft: 12}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Text
+                    style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
+                    Home
+                  </Text>
+                  <Image
+                    source={require('../Asset/down-arrow.png')}
+                    style={styles.arrow}
+                  />
+                </View>
+
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Text style={{fontSize: 11}}>D-110 konark Vasundhara,UP</Text>
+                </View>
               </View>
             </View>
-          </View>
-          <View style={styles.headerRightView}>
-            <View style={{flexDirection: 'row'}}>
-              <Image
-                source={require('../Asset/qr-code.png')}
-                style={styles.scan}
-              />
-              <Image
-                source={require('../Asset/bell.png')}
-                style={styles.scan}
-              />
-              <Image
-                source={require('../Asset/question.png')}
-                style={styles.scan}
-              />
+
+            <View style={styles.headerRightView}>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity>
+                  <Image
+                    source={require('../Asset/qr-code.png')}
+                    style={styles.scan}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Image
+                    source={require('../Asset/bell.png')}
+                    style={styles.scan}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Image
+                    source={require('../Asset/question.png')}
+                    style={styles.scan}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      <View style={styles.UpdateCard}>
-        <View style={{flexDirection: 'row', marginTop: 15}}>
-          <View style={styles.logoContainer}>
-            <Image
-              source={require('../Asset/Phonepe.png')}
-              style={styles.PhonePe}
-            />
-          </View>
+        <View style={styles.UpdateCard}>
+          <View style={{flexDirection: 'row', marginTop: 15}}>
+            <View style={styles.logoContainer}>
+              <Image
+                source={require('../Asset/Phonepe.png')}
+                style={styles.PhonePe}
+              />
+            </View>
 
-          <View style={{marginLeft: 8, flexDirection: 'column'}}>
-            <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
-              App Update Available
-            </Text>
-            <Text style={{fontSize: 14, color: 'grey'}}>
-              We need fixed some issue and added some{'\n'}cool feature in this
-              update
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              marginLeft: -112,
-              marginTop: 62,
-              justifyContent: 'space-between',
-            }}>
-            <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
-            {/*<CustomButton
+            <View style={{marginLeft: 8, flexDirection: 'column'}}>
+              <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
+                App Update Available
+              </Text>
+              <Text style={{fontSize: 14, color: 'grey'}}>
+                We need fixed some issue and added some{'\n'}cool feature in
+                this update
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginLeft: -112,
+                marginTop: 62,
+                justifyContent: 'space-between',
+              }}>
+              <TouchableOpacity>
+                <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
+              </TouchableOpacity>
+              {/*<CustomButton
               title="Update"
               onPress={() => alert('Button Pressed')}
               style={styles.updateButton}
               textStyle={styles.updateButtonText}
           />*/}
+            </View>
           </View>
         </View>
-      </View>
+        <TouchableOpacity>
+          <Image
+            source={require('../Asset/banner.jpg')}
+            style={styles.banner}
+          />
+        </TouchableOpacity>
+        <View style={styles.moneytransfer}>
+          <Text
+            style={{
+              fontSize: 22,
+              color: 'black',
+              marginLeft: 22,
+              fontWeight: 'bold',
+            }}>
+            Money Transfers
+          </Text>
 
-      <Image source={require('../Asset/banner.jpg')} style={styles.banner} />
-      <View style={styles.moneytransfer}>
-        <Text
-          style={{
-            fontSize: 22,
-            color: 'black',
-            marginLeft: 22,
-            fontWeight: 'bold',
-          }}>
-          Money Transfers
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginTop: 12,
-          }}>
           <View
             style={{
-              width: 40,
-              height: 40,
-              backgroundColor: 'purple',
-              borderRadius: 2,
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              marginTop: 12,
             }}>
-            <Image
-              source={require('../Asset/blank.png')}
-              style={styles.icon1}
-            />
-            <Text
-              style={{
-                fontSize: 9.79,
-                color: 'black',
-                marginTop: 9,
-                fontWeight: '500',
-              }}>
-              To Mobile{'\n'} Number
-            </Text>
-          </View>
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              backgroundColor: 'purple',
-              borderRadius: 2,
-            }}>
-            <Image source={require('../Asset/bank.png')} style={styles.icon1} />
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  backgroundColor: 'purple',
+                  borderRadius: 2,
+                }}>
+                <Image
+                  source={require('../Asset/blank.png')}
+                  style={styles.icon1}
+                />
+                <Text
+                  style={{
+                    fontSize: 9.79,
+                    color: 'black',
+                    marginTop: 9,
+                    fontWeight: '500',
+                  }}>
+                  To Mobile{'\n'} Number
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  backgroundColor: 'purple',
+                  borderRadius: 2,
+                }}>
+                <Image
+                  source={require('../Asset/bank.png')}
+                  style={styles.icon1}
+                />
 
-            <Text
-              style={{
-                fontSize: 10.7,
-                color: 'black',
-                marginTop: 7,
-                fontWeight: '500',
-              }}>
-              To Bank/{'\n'}UPI ID
-            </Text>
+                <Text
+                  style={{
+                    fontSize: 10.7,
+                    color: 'black',
+                    marginTop: 7,
+                    fontWeight: '500',
+                  }}>
+                  To Bank/{'\n'}UPI ID
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  backgroundColor: 'purple',
+                  borderRadius: 2,
+                }}>
+                <Image
+                  source={require('../Asset/arrow.png')}
+                  style={styles.icon1}
+                />
+                <Text
+                  style={{
+                    fontSize: 10.7,
+                    color: 'black',
+                    marginTop: 7,
+                    fontWeight: '500',
+                  }}>
+                  To Self{'\n'}Account
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  backgroundColor: 'purple',
+                  borderRadius: 2,
+                }}>
+                <Image
+                  source={require('../Asset/bank.png')}
+                  style={styles.icon1}
+                />
+                <Text
+                  style={{
+                    fontSize: 10.7,
+                    color: 'black',
+                    marginTop: 7,
+                    fontWeight: '500',
+                  }}>
+                  Check{'\n'}Balance
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              backgroundColor: 'purple',
-              borderRadius: 2,
-            }}>
-            <Image
-              source={require('../Asset/arrow.png')}
-              style={styles.icon1}
-            />
-            <Text
-              style={{
-                fontSize: 10.7,
-                color: 'black',
-                marginTop: 7,
-                fontWeight: '500',
-              }}>
-              To Self{'\n'}Account
-            </Text>
-          </View>
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              backgroundColor: 'purple',
-              borderRadius: 2,
-            }}>
-            <Image source={require('../Asset/bank.png')} style={styles.icon1} />
-            <Text
-              style={{
-                fontSize: 10.7,
-                color: 'black',
-                marginTop: 7,
-                fontWeight: '500',
-              }}>
-              Check{'\n'}Balance
-            </Text>
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity>
+            <View style={styles.pu}>
+              <Image
+                source={require('../Asset/wall.png')}
+                style={styles.wall}
+              />
+              <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
+                Phone Wallet
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.pu}>
+              <Image
+                source={require('../Asset/giftbox.png')}
+                style={styles.wall}
+              />
+              <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
+                Phone Gift
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.pu}>
+              <Image
+                source={require('../Asset/loud-speaker.png')}
+                style={styles.wall}
+              />
+              <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
+                Refer & get100
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <View style={styles.recharge}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 22,
+                  color: 'black',
+                  fontWeight: 'bold',
+                  marginLeft: 15,
+                  marginTop: 12,
+                }}>
+                Recharge & Pay Bills
+              </Text>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  marginTop: 2,
+                }}>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                  <Text></Text>
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                  
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  marginTop: 2,
+                }}>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                  <Text></Text>
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                 
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                </View>
+                <View>
+                  <Image
+                    source={require('../Asset/loud-speaker.png')}
+                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                  />
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
-      <View style={{flexDirection:'row'}}>
-        <View style={styles.pu}>
-        <Image source={require('../Asset/wall.png')} style={styles.wall}/>
-        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
-          Phone Wallet
-        </Text>
-        </View>
-        <View style={styles.pu}>
-        <Image source={require('../Asset/giftbox.png')} style={styles.wall}/>
-        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
-          Phone Gift
-        </Text>
-        </View>
-        <View style={styles.pu}>
-        <Image source={require('../Asset/loud-speaker.png')} style={styles.wall}/>
-        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
-          Refer & get100
-        </Text>
-        </View>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -339,25 +471,28 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   pu: {
-    marginTop:12,
-    marginLeft:11,
+    marginTop: 12,
+    marginLeft: 11,
     width: 93,
     height: 80,
-    borderRadius:11,
+    borderRadius: 11,
     backgroundColor: 'cornflowerblue',
-    justifyContent:'center',
-    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  wall:
-  {
-    width:35,
-    height:35,
-    tintColor:'white',
-   
-   
-
-
-  }
+  wall: {
+    width: 35,
+    height: 35,
+    tintColor: 'white',
+  },
+  recharge: {
+    width: '94%',
+    height: 160,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    marginTop: 10,
+    borderRadius: 11,
+  },
 });
 
 export default Home;

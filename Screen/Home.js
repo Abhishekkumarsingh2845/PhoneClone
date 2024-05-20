@@ -40,7 +40,12 @@ const Home = () => {
             </View>
         </View>
       </View>
-      
+      <View style={styles.UpdateCard}>
+        <View >
+           <Image source={require("../Asset/Phonepe.png")} style={styles.PhonePe}/>
+        </View>
+
+      </View>
     </View>
   );
 };
@@ -50,7 +55,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#f2f2f2',
   },
   header: {
     width: '100%',
@@ -99,5 +104,19 @@ const styles = StyleSheet.create({
   {
     flexDirection:'row',
     marginTop:11,
+  },
+  UpdateCard:
+  {
+    width:"94%",
+    height:120,
+    backgroundColor:'white',
+    alignSelf:'center',
+    marginTop:10,
+  },
+  PhonePe :
+  {
+    width:50,
+    height:50,
+    borderRadius:20
   }
 });

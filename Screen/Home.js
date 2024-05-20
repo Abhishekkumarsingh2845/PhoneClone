@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 
@@ -93,13 +94,132 @@ const Home = () => {
               justifyContent: 'space-between',
             }}>
             <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
-            <CustomButton
+            {/*<CustomButton
               title="Update"
               onPress={() => alert('Button Pressed')}
               style={styles.updateButton}
               textStyle={styles.updateButtonText}
-            />
+          />*/}
           </View>
+        </View>
+      </View>
+
+      <Image source={require('../Asset/banner.jpg')} style={styles.banner} />
+      <View style={styles.moneytransfer}>
+        <Text
+          style={{
+            fontSize: 22,
+            color: 'black',
+            marginLeft: 22,
+            fontWeight: 'bold',
+          }}>
+          Money Transfers
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginTop: 12,
+          }}>
+          <View
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: 'purple',
+              borderRadius: 2,
+            }}>
+            <Image
+              source={require('../Asset/blank.png')}
+              style={styles.icon1}
+            />
+            <Text
+              style={{
+                fontSize: 9.79,
+                color: 'black',
+                marginTop: 9,
+                fontWeight: '500',
+              }}>
+              To Mobile{'\n'} Number
+            </Text>
+          </View>
+          <View
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: 'purple',
+              borderRadius: 2,
+            }}>
+            <Image source={require('../Asset/bank.png')} style={styles.icon1} />
+
+            <Text
+              style={{
+                fontSize: 10.7,
+                color: 'black',
+                marginTop: 7,
+                fontWeight: '500',
+              }}>
+              To Bank/{'\n'}UPI ID
+            </Text>
+          </View>
+          <View
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: 'purple',
+              borderRadius: 2,
+            }}>
+            <Image
+              source={require('../Asset/arrow.png')}
+              style={styles.icon1}
+            />
+            <Text
+              style={{
+                fontSize: 10.7,
+                color: 'black',
+                marginTop: 7,
+                fontWeight: '500',
+              }}>
+              To Self{'\n'}Account
+            </Text>
+          </View>
+          <View
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: 'purple',
+              borderRadius: 2,
+            }}>
+            <Image source={require('../Asset/bank.png')} style={styles.icon1} />
+            <Text
+              style={{
+                fontSize: 10.7,
+                color: 'black',
+                marginTop: 7,
+                fontWeight: '500',
+              }}>
+              Check{'\n'}Balance
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View style={{flexDirection:'row'}}>
+        <View style={styles.pu}>
+        <Image source={require('../Asset/wall.png')} style={styles.wall}/>
+        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
+          Phone Wallet
+        </Text>
+        </View>
+        <View style={styles.pu}>
+        <Image source={require('../Asset/giftbox.png')} style={styles.wall}/>
+        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
+          Phone Gift
+        </Text>
+        </View>
+        <View style={styles.pu}>
+        <Image source={require('../Asset/loud-speaker.png')} style={styles.wall}/>
+        <Text style={{fontWeight:'bold',color:'white', marginTop:3,}}>
+          Refer & get100
+        </Text>
         </View>
       </View>
     </View>
@@ -194,6 +314,50 @@ const styles = StyleSheet.create({
     width: 53,
     height: 32, // Specific style for the "Update" button
   },
+  banner: {
+    width: '100%',
+    height: 165,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginTop: 10,
+    borderRadius: 42,
+  },
+  moneytransfer: {
+    width: '94%',
+    height: 120,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    marginTop: 10,
+    borderRadius: 11,
+  },
+  icon1: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+    tintColor: 'white',
+    alignSelf: 'center',
+    marginTop: 3,
+  },
+  pu: {
+    marginTop:12,
+    marginLeft:11,
+    width: 93,
+    height: 80,
+    borderRadius:11,
+    backgroundColor: 'cornflowerblue',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  wall:
+  {
+    width:35,
+    height:35,
+    tintColor:'white',
+   
+   
+
+
+  }
 });
 
 export default Home;

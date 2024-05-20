@@ -1,5 +1,20 @@
-import {StatusBar, StyleSheet, Text, View, Image} from 'react-native';
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
+
+const CustomButton = ({title, onPress, style, textStyle}) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+      <Text>Update</Text>
+    </TouchableOpacity>
+  );
+};
 
 const Home = () => {
   return (
@@ -18,39 +33,78 @@ const Home = () => {
                 style={styles.Image2}
               />
             </View>
-            <View  style={{marginLeft: 12}}>
-              <View style={{flexDirection: 'row',alignItems:'center' }}>
-                <Text style={{fontSize: 20, fontWeight: 'bold',color:'white'}}>Home</Text>
+            <View style={{marginLeft: 12}}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text
+                  style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
+                  Home
+                </Text>
                 <Image
                   source={require('../Asset/down-arrow.png')}
                   style={styles.arrow}
                 />
               </View>
-              <View style={{flexDirection: 'row',alignItems:'center' }}>
-                <Text style={{fontSize:11}}>D-110 konark Vasundhara,UP</Text>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={{fontSize: 11}}>D-110 konark Vasundhara,UP</Text>
               </View>
             </View>
           </View>
           <View style={styles.headerRightView}>
-            <View style={{flexDirection:'row'}}>
-            <Image source ={require('../Asset/qr-code.png')} style={styles.scan}/>
-            <Image source ={require('../Asset/bell.png')} style={styles.scan}/>
-            <Image source ={require('../Asset/question.png')} style={styles.scan}/>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={require('../Asset/qr-code.png')}
+                style={styles.scan}
+              />
+              <Image
+                source={require('../Asset/bell.png')}
+                style={styles.scan}
+              />
+              <Image
+                source={require('../Asset/question.png')}
+                style={styles.scan}
+              />
             </View>
-            </View>
+          </View>
         </View>
       </View>
       <View style={styles.UpdateCard}>
-        <View >
-           <Image source={require("../Asset/Phonepe.png")} style={styles.PhonePe}/>
-        </View>
+        <View style={{flexDirection: 'row', marginTop: 15}}>
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../Asset/Phonepe.png')}
+              style={styles.PhonePe}
+            />
+          </View>
 
+          <View style={{marginLeft: 8, flexDirection: 'column'}}>
+            <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
+              App Update Available
+            </Text>
+            <Text style={{fontSize: 14, color: 'grey'}}>
+              We need fixed some issue and added some{'\n'}cool feature in this
+              update
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginLeft: -112,
+              marginTop: 62,
+              justifyContent: 'space-between',
+            }}>
+            <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
+            <CustomButton
+              title="Update"
+              onPress={() => alert('Button Pressed')}
+              style={styles.updateButton}
+              textStyle={styles.updateButtonText}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
 };
-
-export default Home;
 
 const styles = StyleSheet.create({
   container: {
@@ -86,37 +140,60 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
-  arrow:
-  {
-    width:30,
-    height:30,
-    top:2,
-    tintColor:'white',
-    alignItems:'center' 
+  arrow: {
+    width: 30,
+    height: 30,
+    top: 2,
+    tintColor: 'white',
+    alignItems: 'center',
   },
-  scan : {
-    width:20,
-    height:20,
+  scan: {
+    width: 20,
+    height: 20,
     marginHorizontal: 5,
-    tintColor:'white',
+    tintColor: 'white',
   },
-  headerRightView:
-  {
-    flexDirection:'row',
-    marginTop:11,
+  headerRightView: {
+    flexDirection: 'row',
+    marginTop: 11,
   },
-  UpdateCard:
-  {
-    width:"94%",
-    height:120,
-    backgroundColor:'white',
-    alignSelf:'center',
-    marginTop:10,
+  UpdateCard: {
+    width: '94%',
+    height: 120,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    marginTop: 10,
+    borderRadius: 11,
   },
-  PhonePe :
-  {
-    width:50,
-    height:50,
-    borderRadius:20
-  }
+  PhonePe: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'stretch',
+  },
+  logoContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 55,
+    overflow: 'hidden',
+    backgroundColor: 'ffffff',
+  },
+  button: {
+    backgroundColor: 'blue', // Custom button background color
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white', // Custom button text color
+    fontWeight: 'bold',
+  },
+  updateButton: {
+    backgroundColor: 'purple',
+    width: 53,
+    height: 32, // Specific style for the "Update" button
+  },
 });
+
+export default Home;

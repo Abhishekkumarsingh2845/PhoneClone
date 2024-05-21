@@ -6,28 +6,52 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
+  FlatList
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-const CustomButton = ({title, onPress, style, textStyle}) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
-      <Text>Update</Text>
-    </TouchableOpacity>
-  );
-};
+const {width} = Dimensions.get('window');
+
+const images = [
+  require('../Asset/banner.jpg'),
+  require('../Asset/banner1.jpeg'),
+  require('../Asset/banner3.jpeg'),
+  // Add more image paths as needed
+];
+const renderItem = ({item}) => (
+  <View style={styles.slide}>
+    <Image source={item} style={styles.image} resizeMode="cover" />
+  </View>
+);
+
+
 
 const rechargeData = [
-  { id: 1, text: 'Mobile\n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 2, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 3, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 4, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 5, text: 'Mobile \nRecharge', image: require('../Asset/loud-speaker.png') },
-  { id: 6, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 7, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  { id: 8, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
-  
-  
+  {id: 1, text: 'Mobile\n Recharge', image: require('../Asset/mobile.png')},
+  {id: 2, text: 'Repay', image: require('../Asset/com.png')},
+  {id: 3, text: 'Credit \n Repayment', image: require('../Asset/business.png')},
+  {id: 4, text: ' Loan \n Repayment', image: require('../Asset/loan.png')},
+  {
+    id: 5,
+    text: 'Mobile \nRecharge',
+    image: require('../Asset/loud-speaker.png'),
+  },
+  {
+    id: 6,
+    text: 'Mobile \n Recharge',
+    image: require('../Asset/loud-speaker.png'),
+  },
+  {
+    id: 7,
+    text: 'Mobile \n Recharge',
+    image: require('../Asset/loud-speaker.png'),
+  },
+  {
+    id: 8,
+    text: 'Mobile \n Recharge',
+    image: require('../Asset/loud-speaker.png'),
+  },
 ];
 
 const Home = () => {
@@ -39,22 +63,24 @@ const Home = () => {
 
   const numColumns = 4;
 
-  const renderRechargeItems = rechargeData.reduce((rows, item, index) => {
-    if (index % numColumns === 0) {
-      rows.push([]);
-    }
-    rows[rows.length - 1].push(item);
-    return rows;
-  }, []).map((row, rowIndex) => (
-    <View key={rowIndex} style={styles.row}>
-      {row.map((item) => (
-        <View key={item.id} style={styles.rechargeItem}>
-          <Image source={item.image} style={styles.rechargeImage} />
-          <Text style={styles.rechargeText}>{item.text}</Text>
-        </View>
-      ))}
-    </View>
-  ));
+  const renderRechargeItems = rechargeData
+    .reduce((rows, item, index) => {
+      if (index % numColumns === 0) {
+        rows.push([]);
+      }
+      rows[rows.length - 1].push(item);
+      return rows;
+    }, [])
+    .map((row, rowIndex) => (
+      <View key={rowIndex} style={styles.row}>
+        {row.map(item => (
+          <View key={item.id} style={styles.rechargeItem}>
+            <Image source={item.image} style={styles.rechargeImage} />
+            <Text style={styles.rechargeText}>{item.text}</Text>
+          </View>
+        ))}
+      </View>
+    ));
 
   return (
     <ScrollView>
@@ -116,50 +142,51 @@ const Home = () => {
             </View>
           </View>
         </View>
-        {updateCardVisible && (  <View style={styles.UpdateCard}>
-          <View style={{flexDirection: 'row', marginTop: 6}}>
-            <View style={styles.logoContainer}>
-              <Image
-                source={require('../Asset/Phonepe.png')}
-                style={styles.PhonePe}
-              />
-            </View>
+        {updateCardVisible && (
+          <View style={styles.UpdateCard}>
+            <View style={{flexDirection: 'row', marginTop: 6}}>
+              <View style={styles.logoContainer}>
+                <Image
+                  source={require('../Asset/Phonepe.png')}
+                  style={styles.PhonePe}
+                />
+              </View>
 
-            <View style={{marginLeft: 8, flexDirection: 'column'}}>
-              <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
-                App Update Available
-              </Text>
-              <Text style={{fontSize: 14, color: 'grey'}}>
-                We need fixed some issue and added some{'\n'}cool feature in
-                this update
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                marginLeft: -112,
-                marginTop: 78,
-                justifyContent: 'space-between',
-              }}>
-              <TouchableOpacity onPress={toggleUpdateCardVisibility}>
-                <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
-              </TouchableOpacity>
-              {/*<CustomButton
-              title="Update"
-              onPress={() => alert('Button Pressed')}
-              style={styles.updateButton}
-              textStyle={styles.updateButtonText}
-          />*/}
+              <View style={{marginLeft: 8, flexDirection: 'column'}}>
+                <Text
+                  style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
+                  App Update Available
+                </Text>
+                <Text style={{fontSize: 14, color: 'grey'}}>
+                  We need fixed some issue and added some{'\n'}cool feature in
+                  this update
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginLeft: -112,
+                  marginTop: 78,
+                  justifyContent: 'space-between',
+                }}>
+                <TouchableOpacity onPress={toggleUpdateCardVisibility}>
+                  <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
+                </TouchableOpacity>
+                
+              </View>
             </View>
           </View>
-        </View>
         )}
-        <TouchableOpacity>
-          <Image
-            source={require('../Asset/banner.jpg')}
-            style={styles.banner}
+        <View style={{marginTop:10}}>
+          <FlatList
+            data={images}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
           />
-        </TouchableOpacity>
+        </View>
         <View style={styles.moneytransfer}>
           <Text
             style={{
@@ -477,10 +504,22 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     resizeMode: 'contain',
+    tintColor: 'purple',
   },
   rechargeText: {
     color: 'black',
     textAlign: 'center',
+  },
+  slide: {
+    width,
+    height: 200, // Adjust height as needed
+    marginRight: 10 
+  },
+  image: {
+    flex: 1,
+    margin:2,
+    width: '100%',
+    height: '100%',
   },
 });
 

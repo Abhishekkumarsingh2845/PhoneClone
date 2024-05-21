@@ -79,7 +79,7 @@ const Home = () => {
           </View>
         </View>
         <View style={styles.UpdateCard}>
-          <View style={{flexDirection: 'row', marginTop: 15}}>
+          <View style={{flexDirection: 'row', marginTop: 6}}>
             <View style={styles.logoContainer}>
               <Image
                 source={require('../Asset/Phonepe.png')}
@@ -100,7 +100,7 @@ const Home = () => {
               style={{
                 flexDirection: 'row',
                 marginLeft: -112,
-                marginTop: 62,
+                marginTop: 78,
                 justifyContent: 'space-between',
               }}>
               <TouchableOpacity>
@@ -295,26 +295,28 @@ const Home = () => {
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
-                  <Text></Text>
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
-                  
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
               </View>
               <View
@@ -328,26 +330,28 @@ const Home = () => {
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
-                  <Text></Text>
+                 <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
-                 
+                 <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
                 <View>
                   <Image
                     source={require('../Asset/loud-speaker.png')}
                     style={{width: 50, height: 50, resizeMode: 'contain'}}
                   />
+                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
                 </View>
               </View>
             </View>
@@ -452,7 +456,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: 10,
-    borderRadius: 42,
+    borderRadius: 18,
   },
   moneytransfer: {
     width: '94%',
@@ -487,11 +491,12 @@ const styles = StyleSheet.create({
   },
   recharge: {
     width: '94%',
-    height: 160,
+    height: 210,
     backgroundColor: 'white',
     alignSelf: 'center',
     marginTop: 10,
     borderRadius: 11,
+    marginBottom:22,
   },
 });
 

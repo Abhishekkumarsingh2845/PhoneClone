@@ -17,7 +17,39 @@ const CustomButton = ({title, onPress, style, textStyle}) => {
   );
 };
 
+const rechargeData = [
+  { id: 1, text: 'Mobile\n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 2, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 3, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 4, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 5, text: 'Mobile \nRecharge', image: require('../Asset/loud-speaker.png') },
+  { id: 6, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 7, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  { id: 8, text: 'Mobile \n Recharge', image: require('../Asset/loud-speaker.png') },
+  
+  
+];
+
 const Home = () => {
+  const numColumns = 4;
+
+  const renderRechargeItems = rechargeData.reduce((rows, item, index) => {
+    if (index % numColumns === 0) {
+      rows.push([]);
+    }
+    rows[rows.length - 1].push(item);
+    return rows;
+  }, []).map((row, rowIndex) => (
+    <View key={rowIndex} style={styles.row}>
+      {row.map((item) => (
+        <View key={item.id} style={styles.rechargeItem}>
+          <Image source={item.image} style={styles.rechargeImage} />
+          <Text style={styles.rechargeText}>{item.text}</Text>
+        </View>
+      ))}
+    </View>
+  ));
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -272,89 +304,17 @@ const Home = () => {
 
         <View>
           <View style={styles.recharge}>
-            <View>
-              <Text
-                style={{
-                  fontSize: 22,
-                  color: 'black',
-                  fontWeight: 'bold',
-                  marginLeft: 15,
-                  marginTop: 12,
-                }}>
-                Recharge & Pay Bills
-              </Text>
-
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 2,
-                }}>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 2,
-                }}>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                 <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                 <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../Asset/loud-speaker.png')}
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
-                  />
-                  <Text style={{color:'black'}}> Mobile {'\n'}Recharge</Text>
-                </View>
-              </View>
-            </View>
+            <Text
+              style={{
+                fontSize: 22,
+                color: 'black',
+                fontWeight: 'bold',
+                marginLeft: 15,
+                marginTop: 12,
+              }}>
+              Recharge & Pay Bills
+            </Text>
+            {renderRechargeItems}
           </View>
         </View>
       </View>
@@ -491,12 +451,29 @@ const styles = StyleSheet.create({
   },
   recharge: {
     width: '94%',
-    height: 210,
     backgroundColor: 'white',
     alignSelf: 'center',
     marginTop: 10,
     borderRadius: 11,
-    marginBottom:22,
+    marginBottom: 22,
+    paddingBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10,
+  },
+  rechargeItem: {
+    alignItems: 'center',
+  },
+  rechargeImage: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  rechargeText: {
+    color: 'black',
+    textAlign: 'center',
   },
 });
 

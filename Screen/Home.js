@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 
 const CustomButton = ({title, onPress, style, textStyle}) => {
   return (
@@ -31,6 +31,12 @@ const rechargeData = [
 ];
 
 const Home = () => {
+  const [updateCardVisible, setUpdateCardVisible] = useState(true);
+
+  const toggleUpdateCardVisibility = () => {
+    setUpdateCardVisible(!updateCardVisible);
+  };
+
   const numColumns = 4;
 
   const renderRechargeItems = rechargeData.reduce((rows, item, index) => {
@@ -110,7 +116,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-        <View style={styles.UpdateCard}>
+        {updateCardVisible && (  <View style={styles.UpdateCard}>
           <View style={{flexDirection: 'row', marginTop: 6}}>
             <View style={styles.logoContainer}>
               <Image
@@ -135,7 +141,7 @@ const Home = () => {
                 marginTop: 78,
                 justifyContent: 'space-between',
               }}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={toggleUpdateCardVisibility}>
                 <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
               </TouchableOpacity>
               {/*<CustomButton
@@ -147,6 +153,7 @@ const Home = () => {
             </View>
           </View>
         </View>
+        )}
         <TouchableOpacity>
           <Image
             source={require('../Asset/banner.jpg')}

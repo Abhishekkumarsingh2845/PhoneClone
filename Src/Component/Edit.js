@@ -9,7 +9,7 @@ const Edit = () => {
         height: 92,
         backgroundColor: 'black',
       }}>
-      <View
+      {/* <View
         style={{
           height: 80,
           width: 80,
@@ -31,7 +31,7 @@ const Edit = () => {
           position: 'absolute',
           right: 50,
           top: 10,
-        }}></View>
+        }}></View> */}
     </View>
   );
 };

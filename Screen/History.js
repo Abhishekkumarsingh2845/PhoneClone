@@ -1,61 +1,63 @@
-import {View, Text, StatusBar, Image} from 'react-native';
+import { View, Text, StatusBar, Image, TextInput, ScrollView } from 'react-native';
 import React from 'react';
 import Edit from '../Src/Component/Edit';
 import LinearGradient from 'react-native-linear-gradient';
 
 const History = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <Edit />
 
-      <View
-        style={{
-          height: 192,
-
-          backgroundColor: 'white',
-        }}>
+      <View style={{ height: 192, backgroundColor: 'white' }}>
         <LinearGradient
-          colors={['#2E3192', '#1BFFFF', 'royalblue']} // Define your gradient colors here
-          start={{x: 0, y: 0}} // Define the start point of the gradient
-          end={{x: 1, y: 1}} // Define the end point of the gradient
-          locations={[0.3, 0.5, 0.6]}
+          colors={['#afbef4', '#5e80fc', 'royalblue']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          locations={[0.4, 0.5, 0.6]}
           style={styles.gradientView}>
-          <View
-            style={{
-              width: 80,
-              height: 80,
-              backgroundColor: 'white',
-              marginTop: 122,
-              marginLeft:-5,
-              borderRadius: 40,
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding:20,
-            
-            }}>
-             
-              <Image
-                source={require('../Asset/download.png')}
-                style={{
-                   width: 70,
-                   height: 70,
-                  resizeMode: 'contain',
-                  borderRadius:35,
-                  borderWidth: 1,
-                  borderColor:'lightgrey',
-                }}
-              />
-           
+          <View style={styles.imageView}>
+            <Image
+              source={require('../Asset/download.png')}
+              style={styles.image}
+            />
           </View>
         </LinearGradient>
       </View>
-    </View>
+
+      <View style={styles.inputContainer}>
+        <View style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>EDIT IMAGES/VIDEO</Text>
+        </View>
+        <View style={[styles.buttonContainer, { backgroundColor: 'white', borderWidth: 1, marginTop: 10 }]}>
+          <Text style={[styles.buttonText, { color: 'black' }]}>CHANGE TEMPLATE</Text>
+        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          placeholderTextColor='black'
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor='black'
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Company"
+          placeholderTextColor='black'
+        />
+         <TextInput
+          style={styles.input}
+          placeholder="Company"
+          placeholderTextColor='black'
+        />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = {
   gradientView: {
-    // Make the gradient fill the container
     justifyContent: 'center',
     alignItems: 'center',
     width: 262,
@@ -64,15 +66,54 @@ const styles = {
     marginLeft: 32,
     borderRadius: 15,
   },
-  text: {
+  imageView: {
+    width: 80,
+    height: 80,
+    backgroundColor: 'white',
+    marginTop: 122,
+    marginLeft: -5,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  image: {
+    width: 70,
+    height: 70,
+    resizeMode: 'contain',
+    borderRadius: 35,
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+  },
+  inputContainer: {
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 10,
+    paddingVertical: 20,
+  },
+  buttonContainer: {
+    width: '87%',
+    height: 52,
+    backgroundColor: 'black',
+    borderRadius: 13,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontWeight: 'bold',
     color: 'white',
-    fontSize: 18,
+    letterSpacing: 2,
+  },
+  input: {
+    width: 285,
+    height: 49,
+    backgroundColor: 'whitesmoke',
+    marginTop: 10,
+    borderRadius: 13,
+    paddingHorizontal: 15,
   },
 };
 
 export default History;
-
-
-
-
-

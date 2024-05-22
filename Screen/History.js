@@ -1,18 +1,27 @@
-import { View, Text, StatusBar, Image, TextInput, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  Image,
+  TextInput,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import Edit from '../Src/Component/Edit';
 import LinearGradient from 'react-native-linear-gradient';
+import TextInputCom from '../Src/Component/TextInputCom';
+import Color from '../Src/Component/Color';
 
 const History = () => {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
       <Edit />
 
-      <View style={{ height: 192, backgroundColor: 'white' }}>
+      <View style={{height: 192, backgroundColor: 'white'}}>
         <LinearGradient
           colors={['#afbef4', '#5e80fc', 'royalblue']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
           locations={[0.4, 0.5, 0.6]}
           style={styles.gradientView}>
           <View style={styles.imageView}>
@@ -28,29 +37,58 @@ const History = () => {
         <View style={styles.buttonContainer}>
           <Text style={styles.buttonText}>EDIT IMAGES/VIDEO</Text>
         </View>
-        <View style={[styles.buttonContainer, { backgroundColor: 'white', borderWidth: 1, marginTop: 10 }]}>
-          <Text style={[styles.buttonText, { color: 'black' }]}>CHANGE TEMPLATE</Text>
+        <View
+          style={[
+            styles.buttonContainer,
+            {backgroundColor: 'white', borderWidth: 1, marginTop: 10},
+          ]}>
+          <Text style={[styles.buttonText, {color: 'black'}]}>
+            CHANGE TEMPLATE
+          </Text>
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          placeholderTextColor='black'
+
+        <TextInputCom name="Name" />
+        <TextInputCom name="Email" />
+        <TextInputCom name="Company" />
+        <TextInputCom name="Company" />
+      </View>
+      {/* <View
+        style={{
+          backgroundColor: 'grey',
+          height: 52,
+          width: 290,
+          marginLeft: 15,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View
+          style={{
+            width: 45,
+            height: 45,
+            backgroundColor: 'black',
+            borderRadius: 25,
+          }}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor='black'
+        <View
+          style={{
+            width: 45,
+            height: 45,
+            backgroundColor: 'red',
+            borderRadius: 25,
+          }}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Company"
-          placeholderTextColor='black'
-        />
-         <TextInput
-          style={styles.input}
-          placeholder="Company"
-          placeholderTextColor='black'
-        />
+      </View> */}
+      <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+      
+        <Color Colour={{backgroundColor: 'black'}} />
+        <Color Colour={{backgroundColor: 'pink'}} />
+        <Color Colour={{backgroundColor: 'yellowgreen'}} />
+        <Color Colour={{backgroundColor: 'lightskyblue'}} />
+        <Color Colour={{backgroundColor: 'lightsalmon'}} />
+        <Color Colour={{backgroundColor: 'mediumvioletred'}} />
+        <Color Colour={{backgroundColor: 'lightgray'}} />
+        <Color Colour={{backgroundColor: 'cornflowerblue'}} />
+
       </View>
     </ScrollView>
   );
@@ -105,14 +143,6 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     letterSpacing: 2,
-  },
-  input: {
-    width: 285,
-    height: 49,
-    backgroundColor: 'whitesmoke',
-    marginTop: 10,
-    borderRadius: 13,
-    paddingHorizontal: 15,
   },
 };
 

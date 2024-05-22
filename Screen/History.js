@@ -4,13 +4,14 @@ import {
   StatusBar,
   Image,
   TextInput,
-  ScrollView,
+  ScrollView,TouchableOpacity
 } from 'react-native';
 import React from 'react';
 import Edit from '../Src/Component/Edit';
 import LinearGradient from 'react-native-linear-gradient';
 import TextInputCom from '../Src/Component/TextInputCom';
 import Color from '../Src/Component/Color';
+
 
 const History = () => {
   return (
@@ -89,7 +90,11 @@ const History = () => {
         </View>
         <View style={styles.horizontalLine} />
       </View>
-      
+      <TouchableOpacity>
+      <View style={{width:"95%",height:50,borderRadius:30,backgroundColor:'black',alignSelf:'center',marginTop:15,}}>
+         <Text style={{alignSelf:'center',marginTop:12,fontSize:18,fontWeight:'bold',Color:'black'}}>ADD ITEM</Text>
+      </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 };

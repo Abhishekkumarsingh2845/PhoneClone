@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import React from 'react';
+
 
 const Color = ({Colour}) => {
   return (
    
-    
+    <TouchableOpacity>
       <View style={{...styles.color1,...Colour}} />
+      </TouchableOpacity>
 
   );
 };
@@ -27,6 +29,6 @@ const styles = StyleSheet.create({
         width: 290,
         marginLeft: 15,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
   }
 });

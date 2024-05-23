@@ -6,11 +6,28 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 
 const Insurance = () => {
+  const [colors, setColors] = useState({
+    peopleColor: 'deepskyblue',
+    groupColor: 'whitesmoke',
+  });
 
-  const[color,setColor]=useState(0);
+  const switchColors = button => {
+    if (button === 'people') {
+      setColors({
+        peopleColor: 'deepskyblue',
+        groupColor: 'whitesmoke',
+      });
+    } else if (button === 'group') {
+      setColors({
+        peopleColor: 'whitesmoke',
+        groupColor: 'deepskyblue',
+      });
+    }
+  };
+
   return (
     <View style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
       <View style={styles.header}>
@@ -34,43 +51,49 @@ const Insurance = () => {
           marginTop: 42,
           justifyContent: 'center',
           alignItems: 'center',
-          borderRadius: 5,
+          borderRadius: 15,
           borderWidth: 0.8,
           borderColor: 'darkgrey',
-          alignItems:'center',
-          padding:5,
+          padding: 5,
         }}>
-          <View style={{backgroundColor:'whitesmoke',width:'100%',height:'100%',flexDirection:'row',}}>
-        <TouchableOpacity
+        <View
           style={{
-            width: '49%',
-            height: '90%',
             backgroundColor: 'whitesmoke',
-            borderRadius: 5,
-            alignItems:'center',
-            justifyContent:'center',
+            width: '100%',
+            height: '100%',
+            flexDirection: 'row',
+            borderRadius: 15,
           }}>
-            <Text style={{fontSize:16,color:'black'}}>PEOPLE(20)
-
-            </Text>
+          <TouchableOpacity
+            style={{
+              width: '49%',
+              height: '90%',
+              backgroundColor: colors.peopleColor,
+              borderRadius: 15,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => switchColors('people')}>
+            <Text style={{fontSize: 16, color: 'black'}}>PEOPLE(20)</Text>
           </TouchableOpacity>
-           <TouchableOpacity
-          style={{
-            width: '49%',
-            height: '90%',
-            backgroundColor: 'whitesmoke',
-            borderRadius: 5,
-            alignItems:'center',
-            justifyContent:'center',
-          }}>
-             <Text style={{fontSize:16,color:'black'}}>GROUP(01)
-             </Text>
+          <TouchableOpacity
+            style={{
+              width: '49%',
+              height: '90%',
+              backgroundColor: colors.groupColor,
+              borderRadius: 16,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => switchColors('group')}>
+            <Text style={{fontSize: 16, color: 'black'}}>GROUP(01)</Text>
           </TouchableOpacity>
-          </View>
+        </View>
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   header: {
     backgroundColor: 'black',
@@ -91,8 +114,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   searchIcon: {
-    width: 33,
-    height: 33,
+    width: 23,
+    height: 23,
   },
   searchInput: {
     flex: 1,

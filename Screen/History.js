@@ -31,6 +31,7 @@ const History = () => {
               style={styles.image}
             />
           </View>
+         
         </LinearGradient>
       </View>
 
@@ -173,12 +174,13 @@ const History = () => {
           <Text
             style={{
               alignSelf: 'center',
-              marginTop: 12,
-              fontSize: 18,
+              marginTop: 15,
+              fontSize: 16,
               fontWeight: 'bold',
-              Color: 'black',
+              color: 'white',
+              letterSpacing: 2,
             }}>
-            ADD ITEM
+            ADD MORE ITEM
           </Text>
         </View>
       </TouchableOpacity>

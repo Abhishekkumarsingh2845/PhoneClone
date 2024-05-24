@@ -126,13 +126,14 @@ const Wealth = () => {
         </ScrollView>
       </View>
     <ScrollView>
-      <Info />
-      <Info />
-      <Info />
-      <Info />
-      <Info />
-      <Info />
-      <Info />
+      <Info  Phone=
+      {'9450321897'} Email ={'Singhrnq231217@gmail.com'} UserName={'Abhishek'}/>
+      <Info Phone='978728485'  Email ={'Abhi2333@gmail'}  UserName={'Harsh'}/>
+      <Info  Phone='9834578123' Email ={'hajdji2333@gmail'}  UserName={'John'}/>
+      <Info Phone ="8667367363" Email ={'harshi2333@gmail'}   UserName={'Kartik'}/>
+      <Info Phone ="958399293"  Email ={'joyi2333@gmail'}  UserName={'Deepak'}/>
+      <Info Phone ="9450349695"  Email ={'Abhi2333@gmail'}  UserName={'Vivek'}/>
+      <Info  Phone ="9549940034" Email ={'Abhi2333@gmail'}  UserName={'Abhishek'}/>
       </ScrollView>
     </View>
   );

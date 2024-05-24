@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
 
-const Info = ({UserImage}) => {
+const Info = ({Phone,Email,UserName}) => {
   return (
     <View style={{backgroundColor: 'white', width: '100%', height: 80}}>
     <View
@@ -38,10 +38,10 @@ const Info = ({UserImage}) => {
             marginLeft: 22,
           }}>
           <Text style={{color: 'black', fontWeight: 'bold', fontSize: 17}}>
-            Abhishek Singh
+            {UserName}
           </Text>
-          <Text style={{color: 'black'}}>+91 9450321897</Text>
-          <Text style={{color: 'black'}}>singhrnq231217@hmail.com</Text>
+          <Text style={{color: 'black'}}>{Phone}</Text>
+          <Text style={{color: 'black'}}>{Email}</Text>
         </View>
         <View
           style={{

@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const Store = () => {
+const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
@@ -59,7 +59,7 @@ const Store = () => {
                         height: 35,
                       }}>
                       <Image
-                        source={require('../Asset/call.png')}
+                        source={require('./Asset/call.png')}
                         style={{width: 15, height: 15, resizeMode: 'contain'}}
                       />
                       <Text
@@ -87,7 +87,7 @@ const Store = () => {
                         height: 35,
                       }}>
                       <Image
-                        source={require('../Asset/global.png')}
+                        source={require('./Asset/global.png')}
                         style={{width: 15, height: 15, resizeMode: 'contain'}}
                       />
                       <Text
@@ -115,7 +115,7 @@ const Store = () => {
                         height: 35,
                       }}>
                       <Image
-                        source={require('../Asset/facebook.png')}
+                        source={require('./Asset/facebook.png')}
                         style={{width: 15, height: 15, resizeMode: 'contain'}}
                       />
                       <Text
@@ -143,7 +143,7 @@ const Store = () => {
                         height: 35,
                       }}>
                       <Image
-                        source={require('../Asset/twitter.png')}
+                        source={require('./Asset/twitter.png')}
                         style={{width: 15, height: 15, resizeMode: 'contain'}}
                       />
                       <Text
@@ -175,7 +175,7 @@ const Store = () => {
                         height: 35,
                       }}>
                       <Image
-                        source={require('../Asset/whatsapp.png')}
+                        source={require('./Asset/whatsapp.png')}
                         style={{width: 15, height: 15, resizeMode: 'contain'}}
                       />
                       <Text
@@ -202,7 +202,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/skype.png')}
+                      source={require('./Asset/skype.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -227,7 +227,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/twitter.png')}
+                      source={require('./Asset/twitter.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -252,7 +252,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/telegram.png')}
+                      source={require('./Asset/telegram.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -293,7 +293,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/call.png')}
+                      source={require('./Asset/call.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -318,7 +318,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/call.png')}
+                      source={require('./Asset/call.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -343,7 +343,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/call.png')}
+                      source={require('./Asset/call.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -368,7 +368,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/whatsapp.png')}
+                      source={require('./Asset/whatsapp.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -396,7 +396,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/gg.png')}
+                      source={require('./Asset/gg.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -421,7 +421,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/instagram.png')}
+                      source={require('./Asset/instagram.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -446,7 +446,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/mm.png')}
+                      source={require('./Asset/mm.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -471,7 +471,7 @@ const Store = () => {
                       height: 35,
                     }}>
                     <Image
-                      source={require('../Asset/call.png')}
+                      source={require('./Asset/call.png')}
                       style={{width: 15, height: 15, resizeMode: 'contain'}}
                     />
                     <Text style={{fontSize: 12, color: 'black', marginTop: 6}}>
@@ -555,4 +555,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Store;
+export default App;

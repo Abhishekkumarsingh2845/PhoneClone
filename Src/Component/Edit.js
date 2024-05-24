@@ -15,6 +15,13 @@ const Edit = () => {
           }}
         />
       </View>
+      <View
+        style={{
+          width: 80,
+          height: 90,
+          backgroundColor: 'blue',
+          position: 'absolute',
+        }}></View>
     </View>
   );
 };

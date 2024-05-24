@@ -520,12 +520,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:'black',
   },
   background: {
     backgroundColor: 'white', // semi-transparent background
   },
   content: {
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     padding: 16,
     alignItems: 'center',
   },

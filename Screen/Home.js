@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
-  FlatList
+  FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -24,8 +24,6 @@ const renderItem = ({item}) => (
     <Image source={item} style={styles.image} resizeMode="cover" />
   </View>
 );
-
-
 
 const rechargeData = [
   {id: 1, text: 'Mobile\n Recharge', image: require('../Asset/mobile.png')},
@@ -172,12 +170,11 @@ const Home = () => {
                 <TouchableOpacity onPress={toggleUpdateCardVisibility}>
                   <Text style={{fontSize: 22, color: 'purple'}}>Later</Text>
                 </TouchableOpacity>
-                
               </View>
             </View>
           </View>
         )}
-        <View style={{marginTop:10}}>
+        <View style={{marginTop: 10}}>
           <FlatList
             data={images}
             renderItem={renderItem}
@@ -513,11 +510,11 @@ const styles = StyleSheet.create({
   slide: {
     width,
     height: 200, // Adjust height as needed
-    marginRight: 10 
+    marginRight: 10,
   },
   image: {
     flex: 1,
-    margin:2,
+    margin: 2,
     width: '100%',
     height: '100%',
   },

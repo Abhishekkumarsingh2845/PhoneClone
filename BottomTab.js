@@ -7,6 +7,7 @@ import History from './Screen/History.js';
 import Insurance from './Screen/Insurance.js';
 import Store from './Screen/Store.js';
 import Wealth from './Screen/Wealth.js';
+import Pro from './Screen/Profile.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -119,6 +120,29 @@ function BottomTab() {
                 }}
               >
                 Store
+              </Text>
+            ),
+          }} 
+        />
+        <Tab.Screen
+          name="Pro" 
+          component={Pro} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <Image 
+                source={require('./Asset/user.png')} 
+                style={{ width: 24, height: 24, tintColor: color }} 
+              />
+            ),
+            tabBarLabel: ({ focused, color }) => (
+              <Text 
+                style={{
+                  color: color,
+                  fontWeight: focused ? 'bold' : 'normal',
+                }}
+              >
+                Home
               </Text>
             ),
           }} 

@@ -10,6 +10,7 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
+import Img from '../Utlis/Img';
 
 const {width} = Dimensions.get('window');
 
@@ -88,14 +89,8 @@ const Home = () => {
           <View style={styles.header1}>
             <View style={styles.headerLeftView}>
               <View>
-                <Image
-                  source={require('../Asset/man.png')}
-                  style={styles.Image1}
-                />
-                <Image
-                  source={require('../Asset/india.png')}
-                  style={styles.Image2}
-                />
+                <Image source={Img.MAN} style={styles.Image1} />
+                <Image source={Img.FLAG} style={styles.Image2} />
               </View>
 
               <View style={{marginLeft: 12}}>
@@ -119,22 +114,13 @@ const Home = () => {
             <View style={styles.headerRightView}>
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity>
-                  <Image
-                    source={require('../Asset/qr-code.png')}
-                    style={styles.scan}
-                  />
+                  <Image source={Img.QRCODE} style={styles.scan} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Image
-                    source={require('../Asset/bell.png')}
-                    style={styles.scan}
-                  />
+                  <Image source={Img.BELL} style={styles.scan} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Image
-                    source={require('../Asset/question.png')}
-                    style={styles.scan}
-                  />
+                  <Image source={Img.QUESTIONMARK} style={styles.scan} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -144,10 +130,7 @@ const Home = () => {
           <View style={styles.UpdateCard}>
             <View style={{flexDirection: 'row', marginTop: 6}}>
               <View style={styles.logoContainer}>
-                <Image
-                  source={require('../Asset/Phonepe.png')}
-                  style={styles.PhonePe}
-                />
+                <Image source={Img.PHONEPE} style={styles.PhonePe} />
               </View>
 
               <View style={{marginLeft: 8, flexDirection: 'column'}}>
@@ -209,10 +192,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image
-                  source={require('../Asset/blank.png')}
-                  style={styles.icon1}
-                />
+                <Image source={Img.PROFILE} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 9.79,
@@ -232,10 +212,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image
-                  source={require('../Asset/bank.png')}
-                  style={styles.icon1}
-                />
+                <Image source={Img.BANK} style={styles.icon1} />
 
                 <Text
                   style={{
@@ -256,10 +233,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image
-                  source={require('../Asset/arrow.png')}
-                  style={styles.icon1}
-                />
+                <Image source={Img.REFRESH} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 10.7,
@@ -279,10 +253,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image
-                  source={require('../Asset/bank.png')}
-                  style={styles.icon1}
-                />
+                <Image source={Img.BANK} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 10.7,
@@ -300,10 +271,7 @@ const Home = () => {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image
-                source={require('../Asset/wall.png')}
-                style={styles.wall}
-              />
+              <Image source={Img.WALLET} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Phone Wallet
               </Text>
@@ -311,10 +279,7 @@ const Home = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image
-                source={require('../Asset/giftbox.png')}
-                style={styles.wall}
-              />
+              <Image source={Img.GIFTBOX} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Phone Gift
               </Text>
@@ -322,10 +287,7 @@ const Home = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image
-                source={require('../Asset/loud-speaker.png')}
-                style={styles.wall}
-              />
+              <Image source={Img.LOUDSPK} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Refer & get100
               </Text>

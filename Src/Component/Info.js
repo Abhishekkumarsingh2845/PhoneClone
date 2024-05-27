@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
+import Img from './../../Utlis/Img';
 
 const Info = ({Phone,Email,UserName}) => {
   return (
@@ -27,7 +28,7 @@ const Info = ({Phone,Email,UserName}) => {
             borderColor: '#B8924C',
           }}>
           <Image
-            source={require('../../Asset/man.png')}
+            source={Img.BMAN}
             style={{width: 40, height: 40, resizeMode: 'contain'}} />
         </View>
         <View
@@ -57,7 +58,7 @@ const Info = ({Phone,Email,UserName}) => {
             borderWidth: 1,
           }}>
           <Image
-            source={require('../../Asset/more.png')}
+            source={Img.THREEDOT}
             style={{width: 30, height: 40, resizeMode: 'contain'}}></Image>
         </View>
       </View>

@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
+import PlaceHolder from '../Utlis/PlaceHolder';
+
 
 const Insurance = () => {
   const [colors, setColors] = useState({
@@ -38,7 +40,7 @@ const Insurance = () => {
           />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search Contact"
+            placeholder={PlaceHolder.Search}
             placeholderTextColor="#000"
           />
         </View>
@@ -89,7 +91,9 @@ const Insurance = () => {
             <Text style={{fontSize: 16, color: 'black'}}>GROUP(01)</Text>
           </TouchableOpacity>
         </View>
+        <Detail/>
       </View>
+      
     </View>
   );
 };

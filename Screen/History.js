@@ -12,6 +12,7 @@ import Edit from '../Src/Component/Edit';
 import LinearGradient from 'react-native-linear-gradient';
 import TextInputCom from '../Src/Component/TextInputCom';
 import Color from '../Src/Component/Color';
+import Img from '../Utlis/Img';
 
 const History = () => {
   return (
@@ -27,7 +28,7 @@ const History = () => {
           style={styles.gradientView}>
           <View style={styles.imageView}>
             <Image
-              source={require('../Asset/download.png')}
+              source={ Img.HPROFILE}
               style={styles.image}
             />
           </View>
@@ -74,7 +75,7 @@ const History = () => {
         }}>
         <View style={{flexDirection: 'row'}}>
           <Image
-            source={require('../Asset/phone-call.png')}
+            source={Img.PHONECALL}
             style={{width: 45, height: 22, resizeMode: 'contain'}}
           />
           <Text style={{color: 'black', fontSize: 18, marginLeft: 6}}>
@@ -82,7 +83,7 @@ const History = () => {
           </Text>
           <TouchableOpacity>
             <Image
-              source={require('../Asset/close.png')}
+              source={Img.CUT}
               style={{
                 width: 40,
                 height: 22,
@@ -96,7 +97,7 @@ const History = () => {
         <View style={styles.horizontalLine} />
         <View style={{flexDirection: 'row'}}>
           <Image
-            source={require('../Asset/email.png')}
+            source={Img.EMAIL}
             style={{width: 45, height: 22, resizeMode: 'contain'}}
           />
           <Text style={{color: 'black', fontSize: 18, marginLeft: 6}}>
@@ -104,7 +105,7 @@ const History = () => {
           </Text>
           <TouchableOpacity>
             <Image
-              source={require('../Asset/close.png')}
+              source={Img.CUT}
               style={{
                 width: 40,
                 height: 22,
@@ -118,7 +119,7 @@ const History = () => {
         <View style={styles.horizontalLine} />
         <View style={{flexDirection: 'row'}}>
           <Image
-            source={require('../Asset/global.png')}
+            source={Img.GLOBAL}
             style={{width: 45, height: 22, resizeMode: 'contain'}}
           />
           <Text style={{color: 'black', fontSize: 18, marginLeft: 6}}>
@@ -126,7 +127,7 @@ const History = () => {
           </Text>
           <TouchableOpacity>
             <Image
-              source={require('../Asset/close.png')}
+              source={Img.CUT}
               style={{
                 width: 40,
                 height: 22,
@@ -140,7 +141,7 @@ const History = () => {
         <View style={styles.horizontalLine} />
         <View style={{flexDirection: 'row'}}>
           <Image
-            source={require('../Asset/location.png')}
+            source={Img. LOCATION}
             style={{width: 45, height: 22, resizeMode: 'contain'}}
           />
           <Text style={{color: 'black', fontSize: 18, marginLeft: 6}}>
@@ -148,7 +149,7 @@ const History = () => {
           </Text>
           <TouchableOpacity>
             <Image
-              source={require('../Asset/close.png')}
+              source={Img.CUT}
               style={{
                 width: 40,
                 height: 22,

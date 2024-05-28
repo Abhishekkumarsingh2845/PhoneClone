@@ -251,3 +251,7 @@ const styles = {
 };
 
 export default History;
+
+
+
+// reuseable component are created by props,array.map,flatlist.But when the data is same then use props ,when data is chang

@@ -10,14 +10,15 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
-import Img from '../Utlis/Img';
+import Images from '../Utlis/Img';
+import Col from '../Utlis/Color';
 
 const {width} = Dimensions.get('window');
 
 const images = [
-  require('../Asset/banner.jpg'),
-  require('../Asset/banner1.jpeg'),
-  require('../Asset/banner3.jpeg'),
+Images.BANNER1,
+Images.BANNER2,
+Images.BANNER3,
   // Add more image paths as needed
 ];
 const renderItem = ({item}) => (
@@ -27,29 +28,29 @@ const renderItem = ({item}) => (
 );
 
 const rechargeData = [
-  {id: 1, text: 'Mobile\n Recharge', image: require('../Asset/mobile.png')},
-  {id: 2, text: 'Repay', image: require('../Asset/com.png')},
-  {id: 3, text: 'Credit \n Repayment', image: require('../Asset/business.png')},
-  {id: 4, text: ' Loan \n Repayment', image: require('../Asset/loan.png')},
+  {id: 1, text: 'Mobile\n Recharge', image: Images.MOBILE},
+  {id: 2, text: 'Repay', image: Images.BUILDING},
+  {id: 3, text: 'Credit \n Repayment', image: Images.CREDIT},
+  {id: 4, text: ' Loan \n Repayment', image: Images.LOAN},
   {
     id: 5,
     text: 'Mobile \nRecharge',
-    image: require('../Asset/loud-speaker.png'),
+    image: Images.LOUDPK,
   },
   {
     id: 6,
     text: 'Mobile \n Recharge',
-    image: require('../Asset/loud-speaker.png'),
+    image:  Images.LOUDPK,
   },
   {
     id: 7,
     text: 'Mobile \n Recharge',
-    image: require('../Asset/loud-speaker.png'),
+    image:  Images.LOUDPK,
   },
   {
     id: 8,
     text: 'Mobile \n Recharge',
-    image: require('../Asset/loud-speaker.png'),
+    image:  Images.LOUDPK,
   },
 ];
 
@@ -89,8 +90,8 @@ const Home = () => {
           <View style={styles.header1}>
             <View style={styles.headerLeftView}>
               <View>
-                <Image source={Img.MAN} style={styles.Image1} />
-                <Image source={Img.FLAG} style={styles.Image2} />
+                <Image source={Images.MAN} style={styles.Image1} />
+                <Image source={Images.FLAG} style={styles.Image2} />
               </View>
 
               <View style={{marginLeft: 12}}>
@@ -114,13 +115,13 @@ const Home = () => {
             <View style={styles.headerRightView}>
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity>
-                  <Image source={Img.QRCODE} style={styles.scan} />
+                  <Image source={Images.QRCODE} style={styles.scan} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Image source={Img.BELL} style={styles.scan} />
+                  <Image source={Images.BELL} style={styles.scan} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Image source={Img.QUESTIONMARK} style={styles.scan} />
+                  <Image source={Images.QUESTIONMARK} style={styles.scan} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -130,7 +131,7 @@ const Home = () => {
           <View style={styles.UpdateCard}>
             <View style={{flexDirection: 'row', marginTop: 6}}>
               <View style={styles.logoContainer}>
-                <Image source={Img.PHONEPE} style={styles.PhonePe} />
+                <Image source={Images.PHONEPE} style={styles.PhonePe} />
               </View>
 
               <View style={{marginLeft: 8, flexDirection: 'column'}}>
@@ -192,7 +193,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image source={Img.PROFILE} style={styles.icon1} />
+                <Image source={Images.PROFILE} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 9.79,
@@ -212,7 +213,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image source={Img.BANK} style={styles.icon1} />
+                <Image source={Images.BANK} style={styles.icon1} />
 
                 <Text
                   style={{
@@ -233,7 +234,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image source={Img.REFRESH} style={styles.icon1} />
+                <Image source={Images.REFRESH} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 10.7,
@@ -253,7 +254,7 @@ const Home = () => {
                   backgroundColor: 'purple',
                   borderRadius: 2,
                 }}>
-                <Image source={Img.BANK} style={styles.icon1} />
+                <Image source={Images.BANK} style={styles.icon1} />
                 <Text
                   style={{
                     fontSize: 10.7,
@@ -271,7 +272,7 @@ const Home = () => {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image source={Img.WALLET} style={styles.wall} />
+              <Image source={Images.WALLET} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Phone Wallet
               </Text>
@@ -279,7 +280,7 @@ const Home = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image source={Img.GIFTBOX} style={styles.wall} />
+              <Image source={Images.GIFTBOX} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Phone Gift
               </Text>
@@ -287,7 +288,7 @@ const Home = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={styles.pu}>
-              <Image source={Img.LOUDSPK} style={styles.wall} />
+              <Image source={Images.LOUDSPK} style={styles.wall} />
               <Text style={{fontWeight: 'bold', color: 'white', marginTop: 3}}>
                 Refer & get100
               </Text>
@@ -323,7 +324,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: 50,
-    backgroundColor: 'purple',
+    backgroundColor: Col.black,
   },
   header1: {
     width: '100%',

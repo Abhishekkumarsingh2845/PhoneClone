@@ -24,6 +24,10 @@ export default
     LOCATION:require('../Asset/location.png'),
     BMAN : require('../Asset/man.png'),
     THREEDOT : require('../Asset/more.png'),
+    BUILDING:require('../Asset/com.png'),
+    CREDIT:require('../Asset/business.png'),
+    LOAN:require('../Asset/loan.png'),
+    LOUDPK:require('../Asset/loud-speaker.png'),
 
     
     ADD:require('../Asset/add.png')

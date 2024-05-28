@@ -78,29 +78,7 @@ function BottomTab() {
             ),
           }} 
         />
-         <Tab.Screen 
-          name="Insurnace" 
-          component={Insurance} 
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ color }) => (
-              <Image 
-                source={require('./Asset/user.png')} 
-                style={{ width: 24, height: 24, tintColor: color }} 
-              />
-            ),
-            tabBarLabel: ({ focused, color }) => (
-              <Text 
-                style={{
-                  color: color,
-                  fontWeight: focused ? 'bold' : 'normal',
-                }}
-              >
-                wealth
-              </Text>
-            ),
-          }} 
-        />
+         
         <Tab.Screen 
           name="Store" 
           component={Store} 

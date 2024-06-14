@@ -1,0 +1,75 @@
+// import React, { useState } from 'react';
+// import { View, Text, TextInput, Button, ActivityIndicator, Alert } from 'react-native';
+// import axios from 'axios';
+// const App = () => {
+//     const [title, setTitle] = useState(''); // State to hold the title input
+//     const [body, setBody] = useState(''); // State to hold the body input
+//     const [loading, setLoading] = useState(false); // State to manage loading state
+//     const [response, setResponse] = useState(null); // State to hold API response data
+
+//     // Function to handle POST request
+//     const handlePost = async () => {
+//       // Validate inputs
+//       if (!title || !body) {
+//         Alert.alert('Error', 'Please fill in both fields');
+//         return;
+//       }
+
+//       setLoading(true); // Set loading to true before making the request
+
+//       try {
+//         // Make POST request to create a new post
+//         const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+//           title,
+//           body,
+//           userId: 1,
+//         });
+
+//         setResponse(res.data); // Set response data to state
+//         Alert.alert('Success', 'Post created successfully');
+//       } catch (err) {
+//         // Handle error if request fails
+//         Alert.alert('Error', 'Failed to create post');
+//       } finally {
+//         setLoading(false); // Set loading to false after request completes (whether success or error)
+//       }
+//     };
+
+//     return (
+//       <View>
+//         <Text>Post API Call Example</Text>
+
+//         {/* Input field for title */}
+//         <TextInput
+//           placeholder="Title"
+//           value={title}
+//           onChangeText={setTitle}
+//         />
+
+//         {/* Input field for body */}
+//         <TextInput
+//           placeholder="Body"
+//           value={body}
+//           onChangeText={setBody}
+//         />
+
+//         {/* Button to submit the post */}
+//         <Button title="Submit" onPress={handlePost} />
+
+//         {/* Display ActivityIndicator while loading */}
+//         {loading && <ActivityIndicator size="large" color="#0000ff" />}
+
+//         {/* Display response data after successful post creation */}
+//         {response && (
+//           <View>
+//             <Text>Response:</Text>
+//             <Text>ID: {response.id}</Text>
+//             <Text>Title: {response.title}</Text>
+//             <Text>Body: {response.body}</Text>
+//           </View>
+//         )}
+//       </View>
+//     );
+//   };
+
+//   export default App;

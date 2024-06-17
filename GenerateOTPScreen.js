@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, Button, StyleSheet, Alert} from 'react-native';
 import axios from 'axios';
 
-const GenerateOTPScreen = ({ navigation }) => {
+const GenerateOTPScreen = ({navigation}) => {
   const [mobileNumber, setMobileNumber] = useState('');
 
   const handleGenerateOTP = async () => {
@@ -15,21 +15,25 @@ const GenerateOTPScreen = ({ navigation }) => {
       const apiUrl = 'https://cuckoo.mcrm.in/API/';
       const requestData = {
         operation: 'getotp',
-        data: [{ mobile_no: mobileNumber }],
+        data: [{mobile_no: mobileNumber}],
       };
 
       const response = await axios.post(apiUrl, requestData);
       console.log('Generate OTP Response:', response.data);
 
-      if (response.data.status === '0') {
-        const { otp } = response.data.data[0];
-        navigation.navigate('VerifyOTPScreen', { mobileNumber, otp });
+      if (response.data.status === '200') {
+        const {otp} = response.data.data[0];
+        
+        navigation.navigate('VerifyOTPScreen', {mobileNumber, otp});
       } else {
         Alert.alert('API Error', response.data.msg);
       }
     } catch (error) {
       console.error('API Error:', error);
-      Alert.alert('API Error', 'Failed to generate OTP. Please try again later.');
+      Alert.alert(
+        'API Error',
+        'Failed to generate OTP. Please try again later.',
+      );
     }
   };
 
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor:"blue",
+    backgroundColor: 'blue',
   },
   title: {
     fontSize: 24,
@@ -72,7 +76,6 @@ const styles = StyleSheet.create({
 });
 
 export default GenerateOTPScreen;
-
 
 // import React, { useState, useEffect } from 'react';
 // import { View, Text, StyleSheet, FlatList, ActivityIndicator, Alert } from 'react-native';

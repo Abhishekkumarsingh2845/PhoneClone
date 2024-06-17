@@ -30,7 +30,6 @@
 
 // const styles = StyleSheet.create({})
 
-
 // import React, {useEffect} from 'react';
 // import {
 //   View,
@@ -51,7 +50,7 @@
 //         operation: 'getotp',
 //         data: [
 //           {
-//             mobile_no: '9311266883', 
+//             mobile_no: '9311266883',
 //           },
 //         ],
 //       };
@@ -97,7 +96,6 @@
 // });
 
 // export default App;
-
 
 // import React, { useState } from 'react';
 // import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
@@ -350,8 +348,6 @@
 
 // export default App;
 
-
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -361,6 +357,7 @@ import ProductListScreen from './ProductListScreen';
 import VerifyOTPScreen from './VerifyOTPScreen';
 import GenerateOTPScreen from './GenerateOTPScreen';
 // import ProductListScreen from './ProductListScreen';
+import ProductModelListScreen from './ProductModelScreen';
 
 const Stack = createStackNavigator();
 
@@ -371,9 +368,97 @@ const App = () => {
         <Stack.Screen name="GenerateOTPScreen" component={GenerateOTPScreen} options={{ title: 'Generate OTP' }} />
         <Stack.Screen name="VerifyOTPScreen" component={VerifyOTPScreen} options={{ title: 'Verify OTP' }} />
         <Stack.Screen name="ProductListScreen" component={ProductListScreen} options={{ title: 'Product List' }} />
+        <Stack.Screen name="ProductModelListScreen" component={ProductModelListScreen} options={{ title: 'Product List' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 export default App;
+// import React, {useState} from 'react';
+// import {View, StyleSheet, Text} from 'react-native';
+// import {Dropdown} from 'react-native-element-dropdown';
+
+// const App = () => {
+//   const [value, setValue] = useState(null);
+
+//   const data = [
+//     {label: 'Item 1', value: '1'},
+//     {label: 'Item 2', value: '2'},
+//     {label: 'Item 3', value: '3'},
+//     {label: 'Item 4', value: '4'},
+//     {label: 'Item 5', value: '5'},
+//   ];
+
+//   return (
+//     <View style={styles.container}>
+//       <Dropdown
+//         style={styles.dropdown}
+//         data={data}
+//         labelField="label"
+//         valueField="value"
+//         placeholder="Select an item"
+//         value={value}
+//         onChange={item => {
+//           setValue(item.value);
+//           console.log('Selected:', item);
+//         }}
+//         containerStyle={styles.dropdownContainer}
+//         selectedTextStyle={styles.selectedText}
+//         itemTextStyle={styles.itemText}
+//         placeholderStyle={styles.placeholder}
+//         dropdownStyle={styles.dropdownMenu}
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     padding: 16,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#f5f5f5',
+//   },
+//   title: {
+//     fontSize: 24,
+//     marginBottom: 20,
+//     fontWeight: 'bold',
+//   },
+//   dropdown: {
+//     width: '80%',
+//     height: 50,
+//     borderColor: 'gray',
+//     borderWidth: 1,
+//     borderRadius: 8,
+//     paddingHorizontal: 8,
+//     backgroundColor: 'red',
+//     top:-212,
+//   },
+//   dropdownContainer: {
+//     backgroundColor: 'white',
+//     borderColor: 'gray',
+//     borderWidth: 1,
+//     borderRadius: 8,
+//   },
+//   selectedText: {
+//     fontSize: 16,
+//     color: 'blue',
+//   },
+//   itemText: {
+//     fontSize: 16,
+//     color: 'black',
+//     paddingVertical: 8,
+//   },
+//   placeholder: {
+//     fontSize: 16,
+//     color: 'gray',
+//   },
+//   dropdownMenu: {
+//     backgroundColor: 'white',
+//     borderRadius: 8,
+//   },
+// });
+
+// export default App;

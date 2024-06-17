@@ -193,7 +193,7 @@ const VerifyOTPScreen = ({ route, navigation }) => {
         const response = await axios.post(apiUrl, requestData);
         console.log('Login Response:', response.data);
 
-        if (response.data.status === '0') {
+        if (response.data.status === '200') {
           const token = response.data.data[0].token;
           await AsyncStorage.setItem('authToken', token); // Store the token in AsyncStorage
           navigation.navigate('ProductListScreen');

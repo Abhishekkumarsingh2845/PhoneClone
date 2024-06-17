@@ -12,6 +12,7 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.6.3",
     "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-community/datetimepicker": "^8.1.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.5.12",
     "@react-navigation/drawer": "^6.6.15",
@@ -26,6 +27,7 @@
     "react-native-image-slider-banner": "^1.0.3",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-modal": "^13.0.1",
+    "react-native-modal-datetime-picker": "^17.1.0",
     "react-native-modalize": "^2.1.1",
     "react-native-raw-bottom-sheet": "^3.0.0",
     "react-native-reanimated": "^3.11.0",

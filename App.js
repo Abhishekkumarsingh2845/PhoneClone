@@ -375,39 +375,42 @@ const App = () => {
 };
 
 export default App;
-// import React, {useState} from 'react';
-// import {View, StyleSheet, Text} from 'react-native';
-// import {Dropdown} from 'react-native-element-dropdown';
 
-// const App = () => {
-//   const [value, setValue] = useState(null);
 
-//   const data = [
-//     {label: 'Item 1', value: '1'},
-//     {label: 'Item 2', value: '2'},
-//     {label: 'Item 3', value: '3'},
-//     {label: 'Item 4', value: '4'},
-//     {label: 'Item 5', value: '5'},
-//   ];
+
+
+// import React, { useState } from 'react';
+// import { View, Button, Text, StyleSheet } from 'react-native';
+// import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
+// const MyDateTimePicker = () => {
+//   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+//   const [selectedDate, setSelectedDate] = useState(null);
+
+//   const showDatePicker = () => {
+//     setDatePickerVisibility(true);
+//   };
+
+//   const hideDatePicker = () => {
+//     setDatePickerVisibility(false);
+//   };
+
+//   const handleConfirm = (date) => {
+//     setSelectedDate(date);
+//     hideDatePicker();
+//   };
 
 //   return (
 //     <View style={styles.container}>
-//       <Dropdown
-//         style={styles.dropdown}
-//         data={data}
-//         labelField="label"
-//         valueField="value"
-//         placeholder="Select an item"
-//         value={value}
-//         onChange={item => {
-//           setValue(item.value);
-//           console.log('Selected:', item);
-//         }}
-//         containerStyle={styles.dropdownContainer}
-//         selectedTextStyle={styles.selectedText}
-//         itemTextStyle={styles.itemText}
-//         placeholderStyle={styles.placeholder}
-//         dropdownStyle={styles.dropdownMenu}
+//       <Text style={styles.text}>
+//         Selected Date: {selectedDate ? selectedDate.toLocaleString() : 'None'}
+//       </Text>
+//       <Button title="Select Date" onPress={showDatePicker} />
+//       <DateTimePickerModal
+//         isVisible={isDatePickerVisible}
+//         mode="datetime" // Use "date" for date only, "time" for time only
+//         onConfirm={handleConfirm}
+//         onCancel={hideDatePicker}
 //       />
 //     </View>
 //   );
@@ -416,49 +419,14 @@ export default App;
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
-//     padding: 16,
 //     justifyContent: 'center',
 //     alignItems: 'center',
-//     backgroundColor: '#f5f5f5',
+//     paddingHorizontal: 20,
 //   },
-//   title: {
-//     fontSize: 24,
+//   text: {
+//     fontSize: 18,
 //     marginBottom: 20,
-//     fontWeight: 'bold',
-//   },
-//   dropdown: {
-//     width: '80%',
-//     height: 50,
-//     borderColor: 'gray',
-//     borderWidth: 1,
-//     borderRadius: 8,
-//     paddingHorizontal: 8,
-//     backgroundColor: 'red',
-//     top:-212,
-//   },
-//   dropdownContainer: {
-//     backgroundColor: 'white',
-//     borderColor: 'gray',
-//     borderWidth: 1,
-//     borderRadius: 8,
-//   },
-//   selectedText: {
-//     fontSize: 16,
-//     color: 'blue',
-//   },
-//   itemText: {
-//     fontSize: 16,
-//     color: 'black',
-//     paddingVertical: 8,
-//   },
-//   placeholder: {
-//     fontSize: 16,
-//     color: 'gray',
-//   },
-//   dropdownMenu: {
-//     backgroundColor: 'white',
-//     borderRadius: 8,
 //   },
 // });
 
-// export default App;
+// export default MyDateTimePicker;

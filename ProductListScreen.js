@@ -142,15 +142,17 @@
 // export default ProductListScreen;import React, { useState, useEffect } from 'react';4
 
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Text, Alert, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, Text, Alert, ActivityIndicator,Button, Image, TouchableOpacity} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
 const ProductListScreen = () => {
   const [value1, setValue1] = useState(null);
   const [value2, setValue2] = useState(null);
-  const [value3, setValue3] = useState(null);
+
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [stateValue, setStateValue] = useState(null);
@@ -158,9 +160,26 @@ const ProductListScreen = () => {
   const [districtValue, setDistrictValue] = useState(null);
   const [districtData, setDistrictData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [cityValue, setCityValue] = useState(null);
-  const [cityData, setCityData] = useState([]);
+  const [warrantyValue, setWarrantyValue] = useState(null);
+  const [warrantyData, setWarrantyData] = useState([]);
+
   const [error, setError] = useState('');
+
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = date => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
 
   useEffect(() => {
     const fetchProductList = async () => {
@@ -312,6 +331,57 @@ const ProductListScreen = () => {
   }, []);
 
   useEffect(() => {
+    const fetchWarrantyList = async modelId => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const token = await AsyncStorage.getItem('authToken');
+        if (!token) {
+          throw new Error('Token not found');
+        }
+
+        const apiUrl = 'https://cuckoo.mcrm.in/API/';
+        const requestData = {
+          operation: 'getWarranty',
+          data: [{model_id: modelId, invoice_date: '2024-03-28'}],
+        };
+
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+
+        const response = await axios.post(apiUrl, requestData, {headers});
+        console.log('Warranty List Response:', response.data);
+
+        if (response.data.status === '200') {
+          const dropdownData = response.data.data.map(warranty => ({
+            label: ` Status: ${warranty.warranty_status}`,
+            value: warranty.model_id,
+          }));
+          setWarrantyData(dropdownData);
+        } else {
+          setError(response.data.msg);
+          Alert.alert('API Error', response.data.msg);
+        }
+      } catch (error) {
+        console.error('API Error:', error);
+        setError('Failed to fetch warranty list. Please try again later.');
+        Alert.alert(
+          'API Error',
+          'Failed to fetch warranty list. Please try again later.',
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (value2) {
+      fetchWarrantyList(value2);
+    }
+  }, [value2]);
+
+  useEffect(() => {
     const fetchDistrictList = async () => {
       setLoading(true);
       setError('');
@@ -387,25 +457,42 @@ const ProductListScreen = () => {
             placeholderStyle={styles.placeholder}
             dropdownStyle={styles.dropdownMenu}
           />
-          {value1 && (
-            <Dropdown
-              style={styles.dropdown}
-              data={data2}
-              labelField="label"
-              valueField="value"
-              placeholder="Select second item"
-              value={value2}
-              onChange={item => {
-                setValue2(item.value);
-                console.log('Selected second item:', item);
-              }}
-              containerStyle={styles.dropdownContainer}
-              selectedTextStyle={styles.selectedText}
-              itemTextStyle={styles.itemText}
-              placeholderStyle={styles.placeholder}
-              dropdownStyle={styles.dropdownMenu}
-            />
-          )}
+       
+           {value1 && (
+        <View style={{flexDirection:'row',left:25}}>
+           <Dropdown
+            style={styles.dropdown}
+            data={data2}
+            labelField="label"
+            valueField="value"
+            placeholder="Select second item"
+            value={value2}
+            onChange={(item) => {
+              setValue2(item.value);
+              console.log('Selected second item:', item);
+            }}
+            containerStyle={styles.dropdownContainer}
+            selectedTextStyle={styles.selectedText}
+            itemTextStyle={styles.itemText}
+            placeholderStyle={styles.placeholder}
+            dropdownStyle={styles.dropdownMenu}
+          />
+         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',padding:2 ,right:-3}}>
+          <TouchableOpacity onPress={showDatePicker}>
+          <Image source={ require("./Asset/calendar.png")} style={{width:40,height:30,resizeMode:'contain'}}    />
+          </TouchableOpacity>
+          
+    
+    </View>
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="datetime" // Use "date" for date only, "time" for time only
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+          />
+         
+        </View>
+      )}
           {value2 && (
             <Dropdown
               style={styles.dropdown}
@@ -444,7 +531,7 @@ const ProductListScreen = () => {
               dropdownStyle={styles.dropdownMenu}
             />
           )}
-      
+         
         </>
       )}
     </View>

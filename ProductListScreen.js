@@ -1,155 +1,14 @@
-// import React, { useState, useEffect } from 'react';
 
-// import React, {useState, useEffect} from 'react';
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-//   FlatList,
-//   ActivityIndicator,
-//   Alert,
-//   Button,
-// } from 'react-native';
-// import axios from 'axios';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// const ProductListScreen = ({navigation}) => {
-//   const [productList, setProductList] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState('');
-
-//   useEffect(() => {
-//     fetchProductList();
-//   }, []);
-
-//   const fetchProductList = async () => {
-//     setLoading(true);
-//     setError('');
-
-//     try {
-//       const token = await AsyncStorage.getItem('authToken');
-//       if (!token) {
-//         throw new Error('Token not found');
-//       }
-
-//       const apiUrl = 'https://cuckoo.mcrm.in/API/';
-//       const requestData = {
-//         operation: 'getProduct',
-//         data: [],
-//       };
-
-//       const headers = {
-//         Authorization: `Bearer ${token}`,
-//       };
-
-//       const response = await axios.post(apiUrl, requestData, {headers});
-//       console.log('Product List Response:', response.data);
-
-//       if (response.data.status === '200') {
-//         setProductList(response.data.data);
-//       } else {
-//         setError(response.data.msg);
-//         Alert.alert('API Error', response.data.msg);
-//       }
-//     } catch (error) {
-//       console.error('API Error:', error);
-//       setError('Failed to fetch product list. Please try again later.');
-//       Alert.alert(
-//         'API Error',
-//         'Failed to fetch product list. Please try again later.',
-//       );
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const renderProductItem = ({item}) => (
-//     <View style={styles.productItem}>
-//       <Text style={styles.productName}>{item.product_name}</Text>
-//       <Text style={styles.productID}>ID: {item.product_id}</Text>
-//       <Text style={styles.serviceType}>Service Type: {item.service_type}</Text>
-//       <Button
-//         title="Go"
-//         onPress={() =>
-//           navigation.navigate('ProductModelListScreen', {
-//             productId: item.product_id,
-//           })
-//         }
-//       />
-//     </View>
-//   );
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.title}>Product List</Text>
-//       {loading ? (
-//         <ActivityIndicator size="large" color="#0000ff" />
-//       ) : error ? (
-//         <Text style={styles.errorText}>{error}</Text>
-//       ) : (
-//         <FlatList
-//           data={productList}
-//           renderItem={renderProductItem}
-//           keyExtractor={item => item.product_id.toString()}
-//           style={styles.flatList}
-//         />
-//       )}
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: 20,
-//     backgroundColor: 'blue',
-//   },
-//   title: {
-//     fontSize: 24,
-//     marginBottom: 20,
-//     fontWeight: 'bold',
-//   },
-//   flatList: {
-//     width: '100%',
-//     marginTop: 10,
-//   },
-//   productItem: {
-//     padding: 10,
-//     borderBottomWidth: 1,
-//     borderBottomColor: '#ccc',
-//   },
-//   productName: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//   },
-//   productID: {
-//     fontSize: 16,
-//     color: '#666',
-//   },
-//   serviceType: {
-//     fontSize: 16,
-//     color: '#666',
-//   },
-//   errorText: {
-//     fontSize: 16,
-//     color: 'red',
-//     marginTop: 20,
-//   },
-// });
-
-// export default ProductListScreen;import React, { useState, useEffect } from 'react';4
 
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Text, Alert, ActivityIndicator,Button, Image, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, Alert, ActivityIndicator,Button, Image,TextInput, TouchableOpacity, ScrollView} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-const ProductListScreen = () => {
+const ProductListScreen = ({ modelId }) => {
   const [value1, setValue1] = useState(null);
   const [value2, setValue2] = useState(null);
 
@@ -160,8 +19,9 @@ const ProductListScreen = () => {
   const [districtValue, setDistrictValue] = useState(null);
   const [districtData, setDistrictData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [warrantyValue, setWarrantyValue] = useState(null);
-  const [warrantyData, setWarrantyData] = useState([]);
+  const [customerProducts, setCustomerProducts] = useState([]);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [warrantyStatus, setWarrantyStatus] = useState([]); // New state for warranty status
 
   const [error, setError] = useState('');
 
@@ -330,56 +190,7 @@ const ProductListScreen = () => {
     fetchStateList();
   }, []);
 
-  useEffect(() => {
-    const fetchWarrantyList = async modelId => {
-      setLoading(true);
-      setError('');
-
-      try {
-        const token = await AsyncStorage.getItem('authToken');
-        if (!token) {
-          throw new Error('Token not found');
-        }
-
-        const apiUrl = 'https://cuckoo.mcrm.in/API/';
-        const requestData = {
-          operation: 'getWarranty',
-          data: [{model_id: modelId, invoice_date: '2024-03-28'}],
-        };
-
-        const headers = {
-          Authorization: `Bearer ${token}`,
-        };
-
-        const response = await axios.post(apiUrl, requestData, {headers});
-        console.log('Warranty List Response:', response.data);
-
-        if (response.data.status === '200') {
-          const dropdownData = response.data.data.map(warranty => ({
-            label: ` Status: ${warranty.warranty_status}`,
-            value: warranty.model_id,
-          }));
-          setWarrantyData(dropdownData);
-        } else {
-          setError(response.data.msg);
-          Alert.alert('API Error', response.data.msg);
-        }
-      } catch (error) {
-        console.error('API Error:', error);
-        setError('Failed to fetch warranty list. Please try again later.');
-        Alert.alert(
-          'API Error',
-          'Failed to fetch warranty list. Please try again later.',
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (value2) {
-      fetchWarrantyList(value2);
-    }
-  }, [value2]);
+ 
 
   useEffect(() => {
     const fetchDistrictList = async () => {
@@ -432,8 +243,150 @@ const ProductListScreen = () => {
     }
   }, [stateValue]);
 
+
+  useEffect(() => {
+    const fetchCustomerProducts = async () => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const token = await AsyncStorage.getItem('authToken');
+        if (!token) {
+          throw new Error('Token not found');
+        }
+
+        const apiUrl = 'https://cuckoo.mcrm.in/API/';
+        const requestData = {
+          operation: 'getCustomerProduct',
+          data: [{
+            mobile_no: phoneNumber
+          }]
+        };
+
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+
+        const response = await axios.post(apiUrl, requestData, { headers });
+        console.log('Customer Products Response:', response.data);
+
+        if (response.data.status === '200') {
+          const customerProductsData = response.data.data;
+          setCustomerProducts(customerProductsData);
+        } else {
+          setError(response.data.msg);
+          Alert.alert('API Error', response.data.msg);
+        }
+      } catch (error) {
+        console.error('API Error:', error);
+        setError('Failed to fetch customer products. Please try again later.');
+        Alert.alert(
+          'API Error',
+          'Failed to fetch customer products. Please try again later.'
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (phoneNumber) {
+      fetchCustomerProducts();
+    }
+  }, [phoneNumber]);
+// New useEffect for fetching warranty status
+useEffect(() => {
+  const fetchWarrantyStatus = async () => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const token = await AsyncStorage.getItem('authToken');
+      if (!token) {
+        throw new Error('Token not found');
+      }
+
+      const apiUrl = 'https://cuckoo.mcrm.in/API/';
+      const requestData = {
+        operation: 'getWarranty',
+        data: [{
+          model_id: modelId,  // Use modelId from props or state
+          invoice_date: selectedDate,  // Use selectedDate from state
+        }]
+      };
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.post(apiUrl, requestData, { headers });
+      console.log('Warranty Status Response:', response.data);
+
+      if (response.data.status === '200') {
+        const warrantyStatusData = response.data.data;
+        setWarrantyStatus(warrantyStatusData); // Update warranty status state
+      } else {
+        setError(response.data.msg);
+        Alert.alert('API Error', response.data.msg);
+      }
+    } catch (error) {
+      console.error('API Error:', error);
+      setError('Failed to fetch warranty status. Please try again later.');
+      Alert.alert(
+        'API Error',
+        'Failed to fetch warranty status. Please try again later.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Only fetch warranty status if modelId and selectedDate are available
+  if (modelId && selectedDate) {
+    fetchWarrantyStatus();
+  }
+}, [modelId, selectedDate]);
+
   return (
     <View style={styles.container}>
+      <ScrollView>
+   <TextInput
+        style={styles.input}
+        placeholder="Enter phone number"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
+        keyboardType="numeric"
+      />
+      <Button
+        title="Fetch Customer Products"
+        onPress={() => {
+          if (phoneNumber.trim() === '') {
+            Alert.alert('Error', 'Please enter a phone number');
+          } else {
+            setLoading(true);
+            setCustomerProducts([]);
+            // phoneNumber state change will trigger useEffect to fetch data
+          }
+        }}
+      />
+
+{loading ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : customerProducts.length > 0 ? (
+        customerProducts.map((product, index) => (
+          <View key={index} style={styles.productContainer}>
+            <Text>Customer Name: {product.customer_name}</Text>
+            <Text>Email: {product.email}</Text>
+            <Text>Address: {product.address}</Text>
+            <Text>Model: {product.model}</Text>
+            <Text>Purchase Date: {product.purchase_date}</Text>
+            <Text>Serial Number: {product.serial_no}</Text>
+            <Text>Warranty Card: {product.warranty_card}</Text>
+            <Text>Invoice: {product.invoice}</Text>
+          </View>
+        ))
+      ) : (
+        <Text style={styles.errorText}>{error}</Text>
+      )}
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : error ? (
@@ -531,9 +484,23 @@ const ProductListScreen = () => {
               dropdownStyle={styles.dropdownMenu}
             />
           )}
-         
+        {loading ? (
+  <ActivityIndicator size="large" color="#0000ff" />
+) : warrantyStatus.length > 0 ? (
+  <View style={styles.warrantyContainer}>
+    <Text style={styles.warrantyTitle}>Warranty Status:</Text>
+    <Text>Model ID: {warrantyStatus[0].model_id}</Text>
+    <Text>Warranty Days: {warrantyStatus[0].warranty_days}</Text>
+    <Text>Date of Purchase: {warrantyStatus[0].dop}</Text>
+    <Text>Warranty Expiry Date: {warrantyStatus[0].expire_date}</Text>
+    <Text>Warranty Status: {warrantyStatus[0].warranty_status}</Text>
+  </View>
+) : (
+  <Text style={styles.errorText}>{error}</Text>
+)}
         </>
       )}
+      </ScrollView>
     </View>
   );
 };
@@ -584,6 +551,89 @@ const styles = StyleSheet.create({
     color: 'red',
     marginTop: 20,
   },
+  productListContainer: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  productItem: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+    backgroundColor:'blue',
+  },
+  productName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    backgroundColor:'red',
+  },
+  productId: {
+    fontSize: 14,
+    color: '#666',
+  },
+  loadingIndicator: {
+    marginTop: 20,
+  },
+  errorContainer: {
+    padding: 10,
+    backgroundColor: '#ffcccc',
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  errorText: {
+    color: 'red',
+  },
+  input: {
+    width: '80%',
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginBottom: 20,
+    backgroundColor: 'grey',
+  },
+  productContainer: {
+    marginBottom: 20,
+    padding: 10,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    width: '80%',
+    backgroundColor:'red',
+  },
+  errorText: {
+    fontSize: 16,
+    color: 'red',
+    marginTop: 20,
+  },
+  warrantyContainer: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#cccccc',
+  },
+  warrantyTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: 'blue',
+  },
+  errorText: {
+    fontSize: 16,
+    color: 'red',
+    marginTop: 20,
+  },
 });
 
 export default ProductListScreen;
+
+
+
+
+
+

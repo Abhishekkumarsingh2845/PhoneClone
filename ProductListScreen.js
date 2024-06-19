@@ -22,6 +22,8 @@ const ProductListScreen = ({ modelId }) => {
   const [customerProducts, setCustomerProducts] = useState([]);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [warrantyStatus, setWarrantyStatus] = useState([]); // New state for warranty status
+  const [sourceData, setSourceData] = useState([]);
+  const [selectedSource, setSelectedSource] = useState(null);
 
   const [error, setError] = useState('');
 
@@ -346,6 +348,53 @@ useEffect(() => {
   }
 }, [modelId, selectedDate]);
 
+useEffect(() => {
+  const fetchSourceOfSale = async () => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const token = await AsyncStorage.getItem('authToken');
+      if (!token) {
+        throw new Error('Token not found');
+      }
+
+      const apiUrl = 'https://cuckoo.mcrm.in/API/';
+      const requestData = {
+        operation: 'getSourceOfSale',
+        data: [],
+      };
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.post(apiUrl, requestData, { headers });
+      console.log('Source of Sale Response:', response.data);
+
+      if (response.data.status === '200') {
+        const dropdownData = response.data.data.map((item) => ({
+          label: item.source,
+          value: item.id,
+        }));
+        setSourceData(dropdownData);
+      } else {
+        setError(response.data.msg);
+        Alert.alert('API Error', response.data.msg);
+      }
+    } catch (error) {
+      console.error('API Error:', error);
+      setError('Failed to fetch source of sale data. Please try again later.');
+      Alert.alert('API Error', 'Failed to fetch source of sale data. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchSourceOfSale();
+}, []);
+
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -410,6 +459,24 @@ useEffect(() => {
             placeholderStyle={styles.placeholder}
             dropdownStyle={styles.dropdownMenu}
           />
+           <Dropdown
+          style={styles.dropdown}
+          data={sourceData}
+          labelField="label"
+          valueField="value"
+          placeholder="Select Source of Sale"
+          value={selectedSource}
+          onChange={(item) => {
+            setSelectedSource(item.value);
+            console.log('Selected source of sale:', item);
+          }}
+          containerStyle={styles.dropdownContainer}
+          selectedTextStyle={styles.selectedText}
+          itemTextStyle={styles.itemText}
+          placeholderStyle={styles.placeholder}
+          dropdownStyle={styles.dropdownMenu}
+        />
+
        
            {value1 && (
         <View style={{flexDirection:'row',left:25}}>

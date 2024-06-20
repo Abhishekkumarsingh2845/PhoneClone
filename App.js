@@ -348,33 +348,33 @@
 
 // export default App;
 
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-// import GenerateOTPScreen from './GenerateOTPScreen';
-// import VerifyOTPScreen from './VerifyOTPScreen';
-import ProductListScreen from './ProductListScreen';
-import VerifyOTPScreen from './VerifyOTPScreen';
-import GenerateOTPScreen from './GenerateOTPScreen';
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+// // import GenerateOTPScreen from './GenerateOTPScreen';
+// // import VerifyOTPScreen from './VerifyOTPScreen';
 // import ProductListScreen from './ProductListScreen';
-import ProductModelListScreen from './ProductModelScreen';
+// import VerifyOTPScreen from './VerifyOTPScreen';
+// import GenerateOTPScreen from './GenerateOTPScreen';
+// // import ProductListScreen from './ProductListScreen';
+// import ProductModelListScreen from './ProductModelScreen';
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="GenerateOTP">
-        <Stack.Screen name="GenerateOTPScreen" component={GenerateOTPScreen} options={{ title: 'Generate OTP' }} />
-        <Stack.Screen name="VerifyOTPScreen" component={VerifyOTPScreen} options={{ title: 'Verify OTP' }} />
-        <Stack.Screen name="ProductListScreen" component={ProductListScreen} options={{ title: 'Product List' }} />
-        <Stack.Screen name="ProductModelListScreen" component={ProductModelListScreen} options={{ title: 'Product List' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="GenerateOTP">
+//         <Stack.Screen name="GenerateOTPScreen" component={GenerateOTPScreen} options={{ title: 'Generate OTP' }} />
+//         <Stack.Screen name="VerifyOTPScreen" component={VerifyOTPScreen} options={{ title: 'Verify OTP' }} />
+//         <Stack.Screen name="ProductListScreen" component={ProductListScreen} options={{ title: 'Product List' }} />
+//         <Stack.Screen name="ProductModelListScreen" component={ProductModelListScreen} options={{ title: 'Product List' }} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
 
-export default App;
+// export default App;
 
 
 
@@ -430,3 +430,88 @@ export default App;
 // });
 
 // export default MyDateTimePicker;
+// App.js
+// App.js
+
+// import React from 'react';
+// import { View, Text, Button, StyleSheet } from 'react-native';
+// import { createStore } from 'redux';
+// import { Provider, useDispatch, useSelector } from 'react-redux';
+
+// // Reducer function
+// const counterReducer = (state = { count: 0 }, action) => {
+//   switch (action.type) {
+//     case 'INCREMENT':
+//       return { ...state, count: state.count + 1 };
+//     case 'DECREMENT':
+//       return { ...state, count: state.count - 1 };
+//     default:
+//       return state;
+//   }
+// };
+
+// // Redux store
+// const store = createStore(counterReducer);
+
+// // React Native component
+// const App = () => (
+//   <Provider store={store}>
+//     <CounterApp />
+//   </Provider>
+// );
+
+// const CounterApp = () => {
+//   const count = useSelector((state) => state.count);
+//   const dispatch = useDispatch();
+
+//   const handleIncrement = () => dispatch({ type: 'INCREMENT' });
+//   const handleDecrement = () => dispatch({ type: 'DECREMENT' });
+
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.text}>Counter: {count}</Text>
+//       <View style={styles.buttonContainer}>
+//         <Button title="Increment" onPress={handleIncrement} />
+//         <Button title="Decrement" onPress={handleDecrement} />
+//       </View>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   text: {
+//     fontSize: 24,
+//     marginBottom: 20,
+//   },
+//   buttonContainer: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-around',
+//     width: '80%',
+//     marginVertical: 10,
+//   },
+// });
+
+// export default App;
+
+
+
+// App.js
+
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './Redux/Store';
+import Counter from './Redux/Component';
+
+
+const App = () => (
+  <Provider store={store}>
+ <Counter/>
+  </Provider>
+);
+
+export default App;
